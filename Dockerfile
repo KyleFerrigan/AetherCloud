@@ -1,6 +1,3 @@
-#!/bin/bash
-mkdir -p ~/aethercloud && cd ~/aethercloud
-cat > Dockerfile <<'EOF'
 # --- stage: pull CUDA 11.8 + cuDNN8 runtime libs (Ubuntu 22.04) ---
 FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04 AS cuda
 
@@ -62,7 +59,3 @@ RUN set -eux; \
         find "$p" -xdev -gid "$old_gid" -exec chgrp -h ${PGID} {} + || true; \
       fi; \
     done
- 
-EOF
-
-docker build -t aethercloud:32 .
